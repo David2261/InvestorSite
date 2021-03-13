@@ -1,0 +1,50 @@
+{% extends 'firstapp/base.html' %}
+
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+	<main>
+		<div id="fh5co-content" class="fh5co-no-pd-top">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
+					<h2><span>Our Article</span></h2>
+				</div>
+			</div>
+			<!-----------------------BLOCK CONTENT------------------->
+			<div class="row">
+				<div class="col-md-9 col-padded-right">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="fh5co-blog animate-box">
+								<div class="title title-pin text-center">
+									{% if a %}
+									{% for el in a %}
+									<span class="posted-on">{{ el.pub_date }}</span>
+									<h3><p>{{ el.article_title }}</p></h3>
+								</div>
+								<img class="img-responsive" src="{{ el.image.url }}" alt=""> 
+								<div class="blog-text text-center">
+									<p>{{ el.article_text }}</p>
+									{% endfor %}
+									<!--<ul class="fh5co-social-icons">
+										<li>Share:</li>
+										<li><a href="#"><i class="icon-twitter-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-facebook-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-linkedin-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-dribbble-with-circle"></i></a></li>
+									</ul>-->
+								</div>
+								{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Title -->
+	<div class="container-fluid padding">
+    <div class="row alert text-center">
+      <div class="col-12">
+        <h1 class="display-4">Галерея</h1>
+      </div>
+      <hr>
+    </div>
+  </div>
+<!-- Block content -->
+
+	<div class="container-fluid padding" style="background-color: #1c1d21;">
+    <div class="row padding">
+      {% if gallery %}
+      {% for gal in gallery %}
+      <div class="offset-lg-2 col-lg-4">
+        <h2>{{ gal.gallery_title }}| {{ gal.pub_date }} </h2>
+        <p>{{ gal.short_text }</p>
+        <br>
+        <a href="{% url 'articles:list' %}" class="btn btn-danger">Read next</a>
+      </div>
+      <div class="col-lg-6">
+        <img src="{{ gal.img.url }}" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+      {% else %}
+        Статьи не найдены =(
+      {% endif %}
+  <!-- Block with fixed img -->
+  <figure>
+    <div class="fixed-wrap">
+      <div id="fixed"></div>
+    </div>
+  </figure>
+{% endblock %}

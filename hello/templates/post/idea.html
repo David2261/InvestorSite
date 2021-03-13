@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Eagle Eye & Co / Le{% endblock %}}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/post.css' %}" type="text/css">
+<!-- Title -->
+	<div class="container-fluid padding">
+    <div class="row alert text-center">
+      <div class="col-12">
+        <h1 class="display-4">Идеи</h1>
+      </div>
+      <hr>
+    </div>
+  </div>
+<!-- Block content -->
+
+	<div class="container-fluid padding" style="background-color: #1c1d21;">
+    <div class="row padding">
+      {% if artic %}
+      {% for ol in artic %}
+      <div class="offset-lg-2 col-lg-4">
+        <h2>{{ ol.article_title }}|{{ ol.pub_date }}</h2>
+        <p>{{ ol.short_text }</p>
+        <br>
+        <a href="{% url 'articles:list' %}" class="btn btn-danger">Read next</a>
+      </div>
+      <div class="col-lg-6">
+        <img src="{{ ol.image.url }}" class="img-fluid">
+      </div>
+      {% endfor %}
+    {% else %}
+      Статьи не найдены =(
+    {% endif %}
+    </div>
+  </div>
+  <!-- Block with fixed img -->
+  <figure>
+    <div class="fixed-wrap">
+      <div id="fixed"></div>
+    </div>
+  </figure>
+{% endblock %}

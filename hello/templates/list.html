@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Eagle Eye & Co /{% endblock %}
+
+{% block content %}
+{% if ic %}
+	{% for el in ic %}
+	{% if el.was_published_recently %}
+	НОВАЯ СТАТЬЯ!
+	{% endif %}
+	<h1>{{el.idea_title}}</h1>
+	<em>{{el.pub_date}}</em>
+	<br>
+	<img src="{{ el.idea_image.url }}" alt="">
+	<p>{{el.idea_text}}</p>
+
+	<hr>
+
+	{% if latest_comments_list %}
+		{% for c in latest_comments_list %}
+			<p>
+				<strong>{{c.author_name}}</strong>
+				<p>{{c.comment_text}}</p>
+			</p>
+		{% endfor %}
+
+	{% else %}
+	Комментарии не найдены! Станьте первым ;)
+	{% endif %}
+
+	<hr>
+
+	<form action="{% url 'articles:leave_comment' article.id%}" method="POST">
+		
+		{% csrf_token %}
+
+		<input type="text" required placeholder="Ваше имя" name="name"><br>
+		<textarea name="text" required="" placeholder="Текст комментария" cols="30" rows="10"></textarea> <br>
+
+		<button type="submit">Оставить комментарий</button>
+
+	</form>
+{% endif %}
+
+{% if gallery %}
+	<h2>{{gallery_detail.gallery_title}}</h2>
+
+	<p>{{gallery_detail.gallery_text}}</p>
+
+	<em>{{gallery_detail.pub_date}}</em>
+
+	{% if el.was_published_recently %}
+	НОВАЯ СТАТЬЯ!
+	{% endif %}
+{% endblock %}
