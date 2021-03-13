@@ -17,7 +17,7 @@ SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["""My Dear friend not now"""]
 
 
 INSTALLED_APPS = [
@@ -102,9 +102,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Email Sending Block Post
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'admiralgeneral2003@gmail.com'
-EMAIL_HOST_PASSWORD = 'Bulat06121978'
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 
 
